@@ -1,0 +1,10 @@
+<ParaViewFilters>
+  <Category
+    name="MeshPartitioning"
+    menu_label="&amp;MeshPartitioning"
+    show_in_toolbar="1"
+    preserve_order="1">
+
+    <Filter name="MetisMeshPartitioner" />
+  </Category>
+</ParaViewFilters>

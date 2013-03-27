@@ -1,0 +1,36 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="filters">
+     <SourceProxy name="MetisMeshPartitioner"
+                  class="vtkMetisMeshPartitioner"
+                  label="METIS graph-partitioner filter">
+     <InputProperty
+      name="Input"
+      command="SetInputConnection">
+      <ProxyGroupDomain name="groups">
+        <Group name="sources"/>
+        <Group name="filters"/>
+      </ProxyGroupDomain>
+      <DataTypeDomain name="input_type">
+        <DataType value="vtkUnstructuredGrid"/>
+      </DataTypeDomain>
+      <Documentation>
+       This property specifies the unstructured input grid that will
+       be partitioned.
+      </Documentation>
+     </InputProperty>
+
+     <IntVectorProperty
+      name="NP"
+      command="SetNumberOfPartitions"
+      label="Number of Partitions"
+      number_of_elements="1"
+      default_values="128" >
+     <IntRangeDomain name="range" min="0" />
+       <Documentation>
+        Sets the number of partitions which to partition the domain.
+       </Documentation>
+     </IntVectorProperty>
+
+   </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

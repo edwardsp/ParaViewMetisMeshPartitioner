@@ -15,34 +15,25 @@
 // .NAME vtkMetisMeshPartitioner.h -- Mesh partitioner based on METIS.
 //
 // .SECTION Description
-//  A concrete instance of vtkUnstructuredGridAlgorithm that provides
-//  functionality for partitioning a VTK unstructured grid.
+//  A concrete instance of vtkPointSetAlgorithm that provides
+//  functionality for partitioning a VTK dataset.
 //
 // .SECTION Caveats
 //  In the current implementation, mixed element grids are not supported
 //
 // .SECTION See Also
-//  vtkUnstructuredGridAlgorithm vtkUnstructuredGrid
+//  vtkPointSetAlgorithm
 
 #ifndef VTKMETISMESHPARTITIONER_H_
 #define VTKMETISMESHPARTITIONER_H_
 
-#include "vtkUnstructuredGridAlgorithm.h" // Base class
+#include "vtkPointSetAlgorithm.h"
 
-// Forward VTK Declarations
-class vtkIndent;
-class vtkInformation;
-class vtkInformationVector;
-class vtkUnstructuredGrid;
-
-class vtkMetisKernel;
-
-
-class VTK_EXPORT vtkMetisMeshPartitioner : public vtkUnstructuredGridAlgorithm
+class VTK_EXPORT vtkMetisMeshPartitioner : public vtkPointSetAlgorithm
 {
 public:
   static vtkMetisMeshPartitioner* New();
-  vtkTypeMacro(vtkMetisMeshPartitioner,vtkUnstructuredGridAlgorithm);
+  vtkTypeMacro(vtkMetisMeshPartitioner,vtkPointSetAlgorithm);
   void PrintSelf(ostream& os, vtkIndent indent);
 
   // Description:
@@ -58,17 +49,10 @@ protected:
   virtual int RequestData( vtkInformation *request,
       vtkInformationVector **inputVector,
       vtkInformationVector *outputVector );
-  virtual int FillInputPortInformation(int port, vtkInformation *info);
-  virtual int FillOutputPortInformation( int port, vtkInformation *info );
-
-  // Description:
-  // Partitions the given grid to the requested number of partitions.
-  void Partition(vtkUnstructuredGrid *grid);
 
   // Class ivars
   int NumberOfPartitions; // The total number of partitions requested by the user
 
-  vtkMetisKernel *MetisKernel;
 private:
   vtkMetisMeshPartitioner(const vtkMetisMeshPartitioner&); // Not implemented
   void operator=(const vtkMetisMeshPartitioner&); // Not implemented

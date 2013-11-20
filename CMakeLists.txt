@@ -31,7 +31,6 @@ set(SMXML
 
 ## Set server-manager sources
 set(SMSRC
-    vtkMetisKernel.cxx
     vtkMetisMeshPartitioner.cxx
     )
 

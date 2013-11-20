@@ -11,7 +11,7 @@
         <Group name="filters"/>
       </ProxyGroupDomain>
       <DataTypeDomain name="input_type">
-        <DataType value="vtkUnstructuredGrid"/>
+        <DataType value="vtkPointSet"/>
       </DataTypeDomain>
       <Documentation>
        This property specifies the unstructured input grid that will
